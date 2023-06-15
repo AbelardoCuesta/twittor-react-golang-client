@@ -51,7 +51,7 @@ export default function SignInSingUp() {
         <div>
           <img src={LogoWhiteTwitter} alt="Twittor" />
           <h2>Mira lo que está pasando en el mundo en este momento</h2>
-          <h3>Únete a Twittor hot mimso.</h3>
+          <h3>Únete a Twittor hoy mimso.</h3>
           <Button variant="primary">Regístrate</Button>
           <Button variant="outline-primary" onClick={() => openModal()}>
             Iniciar sesión
