@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import BasicModal from "../../components/Modal/BasicModal/BasicModal";
 import {
   faSearch,
   faUsers,
@@ -11,14 +11,25 @@ import LogoWhiteTwitter from "../../assets/png/logo-white.png";
 import LogoTwitter from "../../assets/png/logo.png";
 import "./SignInSingUp.scss";
 
-export default function SignInSingUp() {
+export default function SignInSingUp(props) {
+  const [showModal, setShowModal] = useState(true);
+  const [contentModal, setContentModal] = useState(null);
+
+  const { show, setShow, children } = props;
   return (
-    <Container className="signin-signup" fluid>
-      <Row>
-        <LeftComponent />
-        <RightComponent></RightComponent>
-      </Row>
-    </Container>
+    <>
+      <Container className="signin-signup" fluid>
+        <Row>
+          <LeftComponent />
+          <RightComponent></RightComponent>
+        </Row>
+      </Container>
+      <BasicModal show={showModal} setShow={setShowModal}>
+        <div>
+          <h2> Modal Content</h2>
+        </div>
+      </BasicModal>
+    </>
   );
 
   function LeftComponent() {
