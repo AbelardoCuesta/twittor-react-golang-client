@@ -12,16 +12,25 @@ import LogoTwitter from "../../assets/png/logo.png";
 import "./SignInSingUp.scss";
 
 export default function SignInSingUp(props) {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [contentModal, setContentModal] = useState(null);
 
   const { show, setShow, children } = props;
+
+  const openModal = (content) => {
+    setContentModal(content);
+    setShowModal(true);
+  };
+
   return (
     <>
       <Container className="signin-signup" fluid>
         <Row>
           <LeftComponent />
-          <RightComponent></RightComponent>
+          <RightComponent
+            openModal={openModal}
+            setShowModal={setShowModal}
+          ></RightComponent>
         </Row>
       </Container>
       <BasicModal show={showModal} setShow={setShowModal}>
@@ -63,8 +72,16 @@ export default function SignInSingUp(props) {
           <img src={LogoWhiteTwitter} alt="Twittor" />
           <h2>Mira lo que está pasando en el mundo en este momento</h2>
           <h3>Únete a Twittor hoy mimso.</h3>
-          <Button variant="primary">Regístrate</Button>
-          <Button variant="outline-primary" onClick={() => openModal()}>
+          <Button
+            onClick={() => openModal(<h2>Formulario de registro</h2>)}
+            variant="outline-primary"
+          >
+            Regístrate
+          </Button>
+          <Button
+            variant="outline-primary"
+            onClick={() => openModal(<h2>Formulario de Login</h2>)}
+          >
             Iniciar sesión
           </Button>
         </div>
